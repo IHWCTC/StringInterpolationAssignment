@@ -62,8 +62,12 @@ else if (resp == "2")
         {
             string? line = sr.ReadLine();
 
-            string[] arr =  String.IsNullOrEmpty(line) ? [] : line.Split('/');
-            Console.WriteLine("Week of {0:MMM}, {0:dd}, {0:yyyy}", arr[0]);
+
+            string[] arr = String.IsNullOrEmpty(line) ? [] : line.Split(',');
+            
+            DateTime date = DateTime.Parse(arr[0]);
+            
+            Console.WriteLine("Week of {0:MMM}, {0:dd}, {0:yyyy}", date);
         }
         
         sr.Close();
