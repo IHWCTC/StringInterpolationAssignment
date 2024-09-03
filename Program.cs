@@ -61,7 +61,9 @@ else if (resp == "2")
         while(!sr.EndOfStream)
         {
             string? line = sr.ReadLine();
-            
+
+            string[] arr =  String.IsNullOrEmpty(line) ? [] : line.Split('/');
+            Console.WriteLine("Week of {0:MMM}, {0:dd}, {0:yyyy}", arr[0]);
         }
         
         sr.Close();
