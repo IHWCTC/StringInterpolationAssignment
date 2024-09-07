@@ -64,10 +64,24 @@ else if (resp == "2")
 
 
             string[] arr = String.IsNullOrEmpty(line) ? [] : line.Split(',');
-            
+            string[] num = arr[1].Split('|');
+
             DateTime date = DateTime.Parse(arr[0]);
-            
-            Console.WriteLine("Week of {0:MMM}, {0:dd}, {0:yyyy}", date);
+
+            int sundayHours = int.Parse(num[0]);
+            int mondayHours = int.Parse(num[1]);
+            int tuesdayHours = int.Parse(num[2]);
+            int wednesdayHours = int.Parse(num[3]);
+            int thursdayHours = int.Parse(num[4]);
+            int fridayHours = int.Parse(num[5]);
+            int saturdayHours = int.Parse(num[6]);
+
+            int totalHours = sundayHours + mondayHours + tuesdayHours + wednesdayHours + thursdayHours + fridayHours + saturdayHours;
+            double avgHours = totalHours / 7.0;
+
+            Console.WriteLine("\nWeek of {0:MMM}, {0:dd}, {0:yyyy}", date);
+            Console.WriteLine($" Su Mo Tu We Th Fr Sa Tot Avg\n -- -- -- -- -- -- -- --- ---\n{sundayHours,3} {mondayHours,2} {tuesdayHours,2} {wednesdayHours,2} {thursdayHours,2} {fridayHours,2} {saturdayHours,2} {totalHours,3} {avgHours, 3:N1}");
+
         }
         
         sr.Close();
